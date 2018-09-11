@@ -14,16 +14,17 @@ import LanguageTranslatorV2
 
 struct Input: Codable {
     let imageUrl: String?
+    let apiKey: String?
 }
 struct Output: Codable {
     let classes: String
 }
 
-let apiKey = "GET_API_KEY_FROM_PARAMS"
 let version = "2018-08-16"
 let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
 func main(param: Input, completion: @escaping (Output?, Error?) -> Void) -> Void {
     let imageUrl = param.imageUrl
+    let apiKey = param.apiKey
     let failure = { (error: Error) in print("err",error) }
     var tags = ""
     visualRecognition.classify(url: imageUrl, failure: failure) { classifiedImages in
