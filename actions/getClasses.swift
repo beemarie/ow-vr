@@ -9,8 +9,6 @@
   */
 
 import VisualRecognitionV3
-import LanguageTranslatorV2
-
 
 struct Input: Codable {
     let imageUrl: String?
