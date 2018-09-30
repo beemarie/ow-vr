@@ -18,11 +18,12 @@ struct Output: Codable {
     let classes: String
 }
 
-let version = "2018-08-16"
-let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
+
 func main(param: Input, completion: @escaping (Output?, Error?) -> Void) -> Void {
-    let imageUrl = param.imageUrl
     let apiKey = param.apiKey
+    let version = "2018-08-16"
+    let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
+    let imageUrl = param.imageUrl
     let failure = { (error: Error) in print("err",error) }
     var tags = ""
     visualRecognition.classify(url: imageUrl, failure: failure) { classifiedImages in
