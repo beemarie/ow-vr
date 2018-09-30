@@ -11,8 +11,9 @@
 import VisualRecognitionV3
 
 struct Input: Codable {
-    let imageUrl: String?
-    let apiKey: String?
+    let imageUrl: String
+    let apiKey: String
+    let version: String
 }
 struct Output: Codable {
     let classes: String
@@ -21,7 +22,7 @@ struct Output: Codable {
 
 func main(param: Input, completion: @escaping (Output?, Error?) -> Void) -> Void {
     let apiKey = param.apiKey
-    let version = "2018-08-16"
+    let version = param.version
     let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
     let imageUrl = param.imageUrl
     let failure = { (error: Error) in print("err",error) }
