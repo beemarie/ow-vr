@@ -19,14 +19,17 @@ struct Output: Codable {
     let classes: String
 }
 
-
 func main(param: Input, completion: @escaping (Output?, Error?) -> Void) -> Void {
+    // set up visual recogntiion sdk
     let apiKey = param.apiKey
     let version = param.version
     let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
+
     let imageUrl = param.imageUrl
     let failure = { (error: Error) in print("err",error) }
     var tags = ""
+
+    // make call to visual recognition classify function
     visualRecognition.classify(url: imageUrl, failure: failure) { classifiedImages in
         let image = classifiedImages.images.first
         let classifier = image?.classifiers.first
