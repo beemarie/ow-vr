@@ -12,7 +12,5 @@ Download wskdeploy from here [wskdeploy download](https://github.com/apache/incu
 
 Use `wskdeploy` to deploy using [`manifest.yml`](./manifest.yml).
 ```
-pushd runtimes/nodejs/
-wskdeploy
-popd
+wskdeploy -m manifest.yaml
 ```
